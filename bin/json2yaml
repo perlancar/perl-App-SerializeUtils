@@ -13,3 +13,6 @@ use JSON;
 
 undef $/;
 print Dump(from_json(scalar <>));
+
+1;
+#ABSTRACT: Convert JSON to YAML serialization

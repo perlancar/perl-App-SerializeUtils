@@ -12,3 +12,6 @@ use YAML::Syck; $YAML::Syck::ImplicitTyping = 1;
 
 undef $/;
 print Dump(eval(scalar <>));
+
+1;
+#ABSTRACT: Convert Data::Dump to YAML serialization

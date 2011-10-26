@@ -13,3 +13,6 @@ use JSON;
 
 undef $/;
 dd(from_json(scalar <>));
+
+1;
+#ABSTRACT: Convert JSON to Data::Dump serialization

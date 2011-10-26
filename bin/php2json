@@ -13,3 +13,6 @@ use PHP::Serialization qw(unserialize);
 
 undef $/;
 print to_json(unserialize(scalar <>));
+
+1;
+#ABSTRACT: Convert PHP to JSON serialization

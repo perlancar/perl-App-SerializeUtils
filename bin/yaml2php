@@ -13,3 +13,6 @@ use PHP::Serialization qw(serialize);
 
 undef $/;
 print serialize(Load(scalar <>));
+
+1;
+#ABSTRACT: Convert YAML to PHP serialization

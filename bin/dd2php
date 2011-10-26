@@ -12,3 +12,6 @@ use PHP::Serialization qw(serialize);
 
 undef $/;
 print serialize(eval(scalar <>));
+
+1;
+#ABSTRACT: Convert Data::Dump to PHP serialization

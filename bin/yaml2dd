@@ -13,3 +13,6 @@ use Data::Dump;
 
 undef $/;
 dd(Load(scalar <>));
+
+1;
+#ABSTRACT: Convert YAML to Data::Dump serialization

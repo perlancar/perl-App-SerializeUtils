@@ -12,3 +12,6 @@ use JSON;
 
 undef $/;
 print to_json(eval(scalar <>));
+
+1;
+#ABSTRACT: Convert Data::Dump to JSON serialization

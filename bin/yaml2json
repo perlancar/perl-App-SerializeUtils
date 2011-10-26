@@ -13,3 +13,6 @@ use JSON;
 
 undef $/;
 print to_json(Load(scalar <>));
+
+1;
+#ABSTRACT: Convert YAML to JSON
