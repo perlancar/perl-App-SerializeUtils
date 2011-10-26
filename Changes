@@ -1,4 +1,9 @@
-Revision history for App-SerializeConvert.
+Revision history for App-SerializeUtils
+
+0.02    2011-11-26
+
+        Rename distribution from App-SerializeConvert to App-SerializeUtils.
+
 
 0.01    2011-11-26
 

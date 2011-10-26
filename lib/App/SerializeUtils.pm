@@ -1,4 +1,4 @@
-package App::SerializeConvert;
+package App::SerializeUtils;
 
 use 5.010;
 use strict;
@@ -7,7 +7,7 @@ use warnings;
 # VERSION
 
 1;
-#ABSTRACT: Convert between serialization formats
+#ABSTRACT: Utilities for serialization tasks
 
 =head1 SYNOPSIS
 
@@ -16,8 +16,10 @@ use warnings;
 
 =head1 DESCRIPTION
 
-This distributions provides the following command-line utilities to convert
-between serializable formats. They take input from stdin and output to stdout.
+This distributions provides the following command-line utilities:
+
+For converting between serializable formats (each of these take input from stdin
+and output to stdout):
 
  dd2json
  dd2php
