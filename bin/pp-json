@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-package php2json; # make PodWeaver happy
+package pp_json; # make PodWeaver happy
 
 use 5.010;
 use strict;
