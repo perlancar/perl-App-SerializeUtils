@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+
+package php2dd; # make PodWeaver happy
+
+use 5.010;
+use strict;
+use warnings;
+
+use Data::Dump;
+use PHP::Serialization qw(unserialize);
+
+# VERSION
+
+undef $/;
+dd(unserialize(scalar <>));

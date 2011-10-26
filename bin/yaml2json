@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+
+package yaml2json; # make PodWeaver happy
+
+use 5.010;
+use strict;
+use warnings;
+
+use YAML::Syck; $YAML::Syck::ImplicitTyping = 1;
+use JSON;
+
+# VERSION
+
+undef $/;
+print to_json(Load(scalar <>));

@@ -1,0 +1,17 @@
+#!/usr/bin/perl
+
+package php2json; # make PodWeaver happy
+
+use 5.010;
+use strict;
+use warnings;
+
+use JSON;
+
+# VERSION
+
+undef $/;
+print to_json(from_json(scalar <>), {pretty=>1});
+
+1;
+#ABSTRACT: Pretty-print JSON

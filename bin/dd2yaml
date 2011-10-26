@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+
+package dd2yaml; # make PodWeaver happy
+
+use 5.010;
+use strict;
+use warnings;
+
+use YAML::Syck; $YAML::Syck::ImplicitTyping = 1;
+
+# VERSION
+
+undef $/;
+print Dump(eval(scalar <>));

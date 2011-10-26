@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+
+package json2dd; # make PodWeaver happy
+
+use 5.010;
+use strict;
+use warnings;
+
+use Data::Dump;
+use JSON;
+
+# VERSION
+
+undef $/;
+dd(from_json(scalar <>));

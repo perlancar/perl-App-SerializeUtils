@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+
+package php2json; # make PodWeaver happy
+
+use 5.010;
+use strict;
+use warnings;
+
+use JSON;
+use PHP::Serialization qw(unserialize);
+
+# VERSION
+
+undef $/;
+print to_json(unserialize(scalar <>));

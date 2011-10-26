@@ -1,0 +1,15 @@
+#!/usr/bin/perl
+
+package php2yaml; # make PodWeaver happy
+
+use 5.010;
+use strict;
+use warnings;
+
+use YAML::Syck; $YAML::Syck::ImplicitTyping = 1;
+use PHP::Serialization qw(unserialize);
+
+# VERSION
+
+undef $/;
+print Dump(unserialize(scalar <>));
