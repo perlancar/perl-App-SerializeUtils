@@ -1,10 +1,16 @@
 Revision history for App-SerializeUtils
 
-0.02    2011-11-26
+0.03     2013-09-09 (SHARYANTO)
 
-        Rename distribution from App-SerializeConvert to App-SerializeUtils.
+         - No functional changes. Rebuild with MakeMaker instead of
+           Module::Build because the latter is deprecated from core in 5.19.
 
 
-0.01    2011-11-26
+0.02    2011-11-26 (SHARYANTO)
 
-        First release.
+        - Rename distribution from App-SerializeConvert to App-SerializeUtils.
+
+
+0.01    2011-11-26 (SHARYANTO)
+
+        - First release.
