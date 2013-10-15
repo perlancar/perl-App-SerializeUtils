@@ -1,5 +1,10 @@
 Revision history for App-SerializeUtils
 
+0.04     2013-10-15 (SHARYANTO)
+
+         - Use JSON option allow_nonref.
+
+
 0.03     2013-09-09 (SHARYANTO)
 
          - No functional changes. Rebuild with MakeMaker instead of
