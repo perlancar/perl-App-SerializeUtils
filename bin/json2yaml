@@ -6,13 +6,13 @@ use 5.010;
 use strict;
 use warnings;
 
-use YAML::Syck; $YAML::Syck::ImplicitTyping = 1;
 use JSON;
+use YAML::Syck; $YAML::Syck::ImplicitTyping = 1;
 
 # VERSION
 
 undef $/;
-print Dump(from_json(scalar <>));
+print Dump(JSON->new->allow_nonref->decode(~~<>));
 
 1;
 #ABSTRACT: Convert JSON to YAML serialization

@@ -12,7 +12,7 @@ use PHP::Serialization qw(serialize);
 # VERSION
 
 undef $/;
-print serialize(from_json(scalar <>));
+print serialize(JSON->new->allow_nonref->decode(~~<>));
 
 1;
 #ABSTRACT: Convert JSON to PHP serialization
