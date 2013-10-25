@@ -1,5 +1,12 @@
 Revision history for App-SerializeUtils
 
+0.05     2013-10-25 (SHARYANTO)
+
+         - Rename *php* scripts to *phpser* scripts, to reduce ambiguity.
+
+         - Add scripts for checking syntax: check-{json,phpser,yaml}.
+
+
 0.04     2013-10-15 (SHARYANTO)
 
          - Use JSON option allow_nonref.
