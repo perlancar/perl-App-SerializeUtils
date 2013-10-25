@@ -1,7 +1,5 @@
 #!/usr/bin/perl
 
-package php2json; # make PodWeaver happy
-
 use 5.010;
 use strict;
 use warnings;
@@ -16,3 +14,4 @@ print to_json(unserialize(scalar <>));
 
 1;
 #ABSTRACT: Convert PHP to JSON serialization
+#PODNAME: phpser2json

@@ -1,0 +1,28 @@
+#!/usr/bin/perl
+
+#package check_json; # make PodWeaver happy
+
+use 5.010;
+use strict;
+use warnings;
+
+use JSON;
+
+# VERSION
+
+eval {
+    undef $/;
+    to_json(~~<>);
+};
+
+die $@ if $@;
+
+1;
+#ABSTRACT: Check YAML syntax
+#PODNAME: check-yaml
+
+=head1 DESCRIPTION
+
+Check YAML syntax. Prints nothing if YAML syntax is okay.
+
+=cut

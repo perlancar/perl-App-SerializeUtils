@@ -22,24 +22,30 @@ For converting between serializable formats (each of these take input from stdin
 and output to stdout):
 
  dd2json
- dd2php
+ dd2phpser
  dd2yaml
 
  json2dd
- json2php
+ json2phpser
  json2yaml
 
- php2dd
- php2json
- php2yaml
+ phpser2dd
+ phpser2json
+ phpser2yaml
 
  yaml2dd
  yaml2json
- yaml2php
+ yaml2phpser
 
 Also included is this utility to pretty-print JSON:
 
  pp-json
+
+And utilities for checking:
+
+ check-json
+ check-phpser
+ check-yaml
 
 
 =head1 SEE ALSO

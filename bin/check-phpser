@@ -1,0 +1,20 @@
+#!/usr/bin/perl
+
+use 5.010;
+use strict;
+use warnings;
+
+use Data::Dump;
+use PHP::Serialization qw(unserialize);
+
+# VERSION
+
+eval {
+    undef $/;
+    unserialize(scalar <>);
+};
+die $@ if $@;
+
+1;
+#ABSTRACT: Convert PHP to Data::Dump serialization
+#PODNAME: check-phpser

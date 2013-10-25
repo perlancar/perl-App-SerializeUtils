@@ -1,7 +1,5 @@
 #!/usr/bin/perl
 
-package php2dd; # make PodWeaver happy
-
 use 5.010;
 use strict;
 use warnings;
@@ -16,3 +14,4 @@ dd(unserialize(scalar <>));
 
 1;
 #ABSTRACT: Convert PHP to Data::Dump serialization
+#PODNAME: phpser2dd
