@@ -1,7 +1,5 @@
 #!/usr/bin/perl
 
-package pp_json; # make PodWeaver happy
-
 use 5.010;
 use strict;
 use warnings;
@@ -15,3 +13,4 @@ print to_json(from_json(scalar <>), {pretty=>1});
 
 1;
 #ABSTRACT: Pretty-print JSON
+#PODNAME: pp-json

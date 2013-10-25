@@ -1,7 +1,5 @@
 #!/usr/bin/perl
 
-package json2yaml; # make PodWeaver happy
-
 use 5.010;
 use strict;
 use warnings;
@@ -16,3 +14,4 @@ print Dump(JSON->new->allow_nonref->decode(~~<>));
 
 1;
 #ABSTRACT: Convert JSON to YAML serialization
+#PODNAME: json2yaml
