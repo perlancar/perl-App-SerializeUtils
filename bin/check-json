@@ -6,6 +6,8 @@ use warnings;
 
 use Getopt::Long;
 
+# VERSION
+
 my $json_mod = '';
 GetOptions(
     'pp' => sub { $json_mod = 'PP' },
@@ -24,8 +26,6 @@ if ($json_mod eq 'PP') {
 } else {
     require JSON;     $json = JSON    ->new->allow_nonref;
 }
-
-# VERSION
 
 eval {
     undef $/;
