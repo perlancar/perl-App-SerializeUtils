@@ -1,7 +1,5 @@
 #!/usr/bin/perl
 
-package json2dd; # make PodWeaver happy
-
 use 5.010;
 use strict;
 use warnings;
@@ -16,3 +14,4 @@ dd(JSON->new->allow_nonref->decode(~~<>));
 
 1;
 #ABSTRACT: Convert JSON to Data::Dump serialization
+#PODNAME: json2dd

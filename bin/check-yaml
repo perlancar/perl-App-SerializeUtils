@@ -1,7 +1,5 @@
 #!/usr/bin/perl
 
-#package check_yaml; # make PodWeaver happy
-
 use 5.010;
 use strict;
 use warnings;

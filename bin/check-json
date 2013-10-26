@@ -1,7 +1,5 @@
 #!/usr/bin/perl
 
-#package check_json; # make PodWeaver happy
-
 use 5.010;
 use strict;
 use warnings;
