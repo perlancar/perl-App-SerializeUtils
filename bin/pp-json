@@ -4,13 +4,48 @@ use 5.010;
 use strict;
 use warnings;
 
-use JSON;
+use Getopt::Long;
 
 # VERSION
 
+my $json_mod = '';
+GetOptions(
+    'pp' => sub { $json_mod = 'PP' },
+    'xs' => sub { $json_mod = 'XS' },
+    'help' => sub {
+        print "Usage: $0 [--pp|--xs] <file>\n";
+        exit 0;
+    },
+);
+
+my $json;
+if ($json_mod eq 'PP') {
+    require JSON::PP; $json = JSON::PP->new->allow_nonref;
+} elsif ($json_mod eq 'XS') {
+    require JSON::XS; $json = JSON::XS->new->allow_nonref;
+} else {
+    require JSON;     $json = JSON    ->new->allow_nonref;
+}
+
+$json->pretty(1);
+
 undef $/;
-print to_json(from_json(scalar <>), {pretty=>1});
+print $json->encode($json->decode(scalar <>));
 
 1;
 #ABSTRACT: Pretty-print JSON
 #PODNAME: pp-json
+
+=head1 COMMAND-LINE OPTIONS
+
+=over
+
+=item * --pp
+
+Force using L<JSON::PP> instead of L<JSON>.
+
+=item * --xs
+
+Force using L<JSON::XS> instead of L<JSON>.
+
+=back
