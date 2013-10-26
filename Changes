@@ -1,5 +1,12 @@
 Revision history for App-SerializeUtils
 
+0.06     2013-10-26 (SHARYANTO)
+
+         - Add --xs, --syck options to check-yaml to pick YAML implementation.
+
+         - Add --xs, --pp options to check-yaml to pick JSON implementation.
+
+
 0.05     2013-10-25 (SHARYANTO)
 
          - Rename *php* scripts to *phpser* scripts, to reduce ambiguity.
