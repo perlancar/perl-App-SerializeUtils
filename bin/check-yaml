@@ -13,7 +13,7 @@ GetOptions(
     'syck' => sub { $yaml_mod = 'Syck' },
     'xs'   => sub { $yaml_mod = 'XS' },
     'help' => sub {
-        print "Usage: $0 [--syck|--xs] <file>\n";
+        print "Usage: check-yaml [--syck|--xs] <file>\n";
         exit 0;
     },
 );

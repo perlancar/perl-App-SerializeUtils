@@ -13,7 +13,7 @@ GetOptions(
     'pp' => sub { $json_mod = 'PP' },
     'xs' => sub { $json_mod = 'XS' },
     'help' => sub {
-        print "Usage: $0 [--pp|--xs] <file>\n";
+        print "Usage: pp-json [--pp|--xs] <file>\n";
         exit 0;
     },
 );
