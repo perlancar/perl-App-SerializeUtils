@@ -1,17 +1,1 @@
-#!/usr/bin/perl
-
-use 5.010;
-use strict;
-use warnings;
-
-use YAML::Syck; $YAML::Syck::ImplicitTyping = 1;
-use PHP::Serialization qw(unserialize);
-
-# VERSION
-
-undef $/;
-print Dump(unserialize(scalar <>));
-
-1;
-#ABSTRACT: Convert PHP to YAML serialization
-#PODNAME: phpser2yaml
+serializeutils-convert

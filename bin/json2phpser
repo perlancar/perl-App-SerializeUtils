@@ -1,17 +1,1 @@
-#!/usr/bin/perl
-
-use 5.010;
-use strict;
-use warnings;
-
-use JSON;
-use PHP::Serialization qw(serialize);
-
-# VERSION
-
-undef $/;
-print serialize(JSON->new->allow_nonref->decode(~~<>));
-
-1;
-#ABSTRACT: Convert JSON to PHP serialization
-#PODNAME: json2phpser
+serializeutils-convert

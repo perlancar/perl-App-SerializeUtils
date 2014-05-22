@@ -1,17 +1,1 @@
-#!/usr/bin/perl
-
-use 5.010;
-use strict;
-use warnings;
-
-use YAML::Syck; $YAML::Syck::ImplicitTyping = 1;
-use JSON;
-
-# VERSION
-
-undef $/;
-print to_json(Load(scalar <>));
-
-1;
-#ABSTRACT: Convert YAML to JSON
-#PODNAME: yaml2json
+serializeutils-convert

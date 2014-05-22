@@ -1,16 +1,1 @@
-#!/usr/bin/perl
-
-use 5.010;
-use strict;
-use warnings;
-
-use YAML::Syck; $YAML::Syck::ImplicitTyping = 1;
-
-# VERSION
-
-undef $/;
-print Dump(eval(scalar <>));
-
-1;
-#ABSTRACT: Convert Data::Dump to YAML serialization
-#PODNAME: dd2yaml
+serializeutils-convert

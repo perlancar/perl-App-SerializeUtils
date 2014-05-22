@@ -1,16 +1,1 @@
-#!/usr/bin/perl
-
-use 5.010;
-use strict;
-use warnings;
-
-use PHP::Serialization qw(serialize);
-
-# VERSION
-
-undef $/;
-print serialize(eval(scalar <>));
-
-1;
-#ABSTRACT: Convert Data::Dump to PHP serialization
-#PODNAME: dd2phpser
+serializeutils-convert

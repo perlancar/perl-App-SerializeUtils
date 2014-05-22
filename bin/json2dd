@@ -1,17 +1,1 @@
-#!/usr/bin/perl
-
-use 5.010;
-use strict;
-use warnings;
-
-use Data::Dump;
-use JSON;
-
-# VERSION
-
-undef $/;
-dd(JSON->new->allow_nonref->decode(~~<>));
-
-1;
-#ABSTRACT: Convert JSON to Data::Dump serialization
-#PODNAME: json2dd
+serializeutils-convert

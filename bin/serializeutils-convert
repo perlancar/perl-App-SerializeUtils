@@ -1,0 +1,116 @@
+#!/usr/bin/perl
+
+use 5.010001;
+use strict;
+use warnings;
+
+# VERSION
+# DATE
+
+my ($from, $to) = $0 =~ /(\w+)2(\w+)\z/
+    or die "Can't determine what formats to convert from/to, ".
+    "please call me as one of dd2json, json2dd, etc.\n";
+
+undef $/;
+
+my $code_from;
+if ($from eq 'dd') {
+    $code_from = 'eval ~~<>';
+} elsif ($from eq 'json') {
+    require JSON;
+    $code_from = 'JSON->new->allow_nonref->decode(~~<>)';
+} elsif ($from eq 'phpser') {
+    require PHP::Serialization;
+    $code_from = 'PHP::Serialization::unserialize(~~<>)';
+} elsif ($from eq 'sereal') {
+    require Sereal::Decoder;
+    $code_from = 'Sereal::Decoder::decode_sereal(~~<>)';
+} elsif ($from eq 'storable') {
+    require Storable;
+    $code_from = 'Storable::thaw(~~<>)';
+} elsif ($from eq 'yaml') {
+    no warnings 'once';
+    require YAML::Syck; $YAML::Syck::ImplicitTyping = 1;
+    $code_from = 'YAML::Syck::Load(~~<>)';
+} else {
+    die "Can't convert from '$from'";
+}
+
+my $code_to;
+if ($to eq 'dd') {
+    require Data::Dump;
+    $code_to = "Data::Dump::dump($code_from)";
+} elsif ($to eq 'json') {
+    require JSON;
+    $code_to = "JSON->new->allow_nonref->encode($code_from)";
+} elsif ($to eq 'phpser') {
+    require PHP::Serialization;
+    $code_to = "PHP::Serialization::serialize($code_from)";
+} elsif ($to eq 'sereal') {
+    require Sereal::Encoder;
+    $code_to = "Sereal::Encoder::encode_sereal($code_from)";
+} elsif ($to eq 'storable') {
+    require Storable;
+    $code_to = "Storable::freeze($code_from)";
+} elsif ($to eq 'yaml') {
+    no warnings 'once';
+    require YAML::Syck; $YAML::Syck::ImplicitTyping = 1;
+    $code_to = "YAML::Syck::Dump($code_from)";
+} else {
+    die "Can't convert to '$to'";
+}
+
+eval "print $code_to";
+die if $@;
+
+1;
+#ABSTRACT: Convert between serialization formats
+#PODNAME: serializeutils-convert
+
+=head1 SYNOPSIS
+
+This script can be called as various names to convert between serialization
+formats:
+
+ dd2json
+ dd2phpser
+ dd2sereal
+ dd2storable
+ dd2yaml
+
+ json2dd
+ json2phpser
+ json2sereal
+ json2storable
+ json2yaml
+
+ phpser2dd
+ phpser2json
+ phpser2sereal
+ phpser2storable
+ phpser2yaml
+
+ sereal2dd
+ sereal2json
+ sereal2phpser
+ sereal2storable
+ sereal2yaml
+
+ storable2dd
+ storable2json
+ storable2phpser
+ storable2sereal
+ storable2yaml
+
+ yaml2dd
+ yaml2json
+ yaml2phpser
+ yaml2sereal
+ yaml2storable
+
+
+=head1 DESCRIPTION
+
+=head1 SEE ALSO
+
+L<App::SerializeUtils>
