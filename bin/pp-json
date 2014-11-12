@@ -36,7 +36,7 @@ print $json->encode($json->decode(scalar <>));
 #ABSTRACT: Pretty-print JSON
 #PODNAME: pp-json
 
-=head1 COMMAND-LINE OPTIONS
+=head1 OPTIONS
 
 =over
 

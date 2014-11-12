@@ -40,7 +40,7 @@ die $@ if $@;
 Check YAML syntax. Prints nothing if YAML syntax is okay.
 
 
-=head1 COMMAND-LINE OPTIONS
+=head1 OPTIONS
 
 =over
 
