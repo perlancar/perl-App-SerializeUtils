@@ -33,7 +33,7 @@ die $@ if $@;
 
 1;
 #ABSTRACT: Check YAML syntax
-#PODNAME: check-yaml
+#PODNAME:
 
 =head1 DESCRIPTION
 

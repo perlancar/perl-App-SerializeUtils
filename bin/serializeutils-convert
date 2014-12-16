@@ -65,7 +65,7 @@ die if $@;
 
 1;
 #ABSTRACT: Convert between serialization formats
-#PODNAME: serializeutils-convert
+#PODNAME:
 
 =head1 SYNOPSIS
 

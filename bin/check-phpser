@@ -17,4 +17,4 @@ die $@ if $@;
 
 1;
 #ABSTRACT: Convert PHP to Data::Dump serialization
-#PODNAME: check-phpser
+#PODNAME:
