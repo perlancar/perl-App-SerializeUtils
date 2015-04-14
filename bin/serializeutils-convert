@@ -75,8 +75,10 @@ die if $@;
 =head1 SYNOPSIS
 
 This script can be called as various names to convert between serialization
-formats:
+formats (note: dd is Perl format using Data::Dump, ddc is Perl format using
+Data::Dump::Color):
 
+ dd2ddc
  dd2json
  dd2phpser
  dd2sereal
@@ -84,30 +86,35 @@ formats:
  dd2yaml
 
  json2dd
+ json2ddc
  json2phpser
  json2sereal
  json2storable
  json2yaml
 
  phpser2dd
+ phpser2ddc
  phpser2json
  phpser2sereal
  phpser2storable
  phpser2yaml
 
  sereal2dd
+ sereal2ddc
  sereal2json
  sereal2phpser
  sereal2storable
  sereal2yaml
 
  storable2dd
+ storable2ddc
  storable2json
  storable2phpser
  storable2sereal
  storable2yaml
 
  yaml2dd
+ yaml2ddc
  yaml2json
  yaml2phpser
  yaml2sereal
