@@ -16,6 +16,8 @@ undef $/;
 my $code_from;
 if ($from eq 'dd') {
     $code_from = 'eval ~~<>';
+} elsif ($from eq 'ddc') {
+    $code_from = 'eval ~~<>';
 } elsif ($from eq 'json') {
     require JSON;
     $code_from = 'JSON->new->allow_nonref->decode(~~<>)';
@@ -40,6 +42,9 @@ my $code_to;
 if ($to eq 'dd') {
     require Data::Dump;
     $code_to = "Data::Dump::dump($code_from)";
+} elsif ($to eq 'ddc') {
+    require Data::Dump::Color;
+    $code_to = "Data::Dump::Color::dump($code_from)";
 } elsif ($to eq 'json') {
     require JSON;
     $code_to = "JSON->new->allow_nonref->encode($code_from)";
