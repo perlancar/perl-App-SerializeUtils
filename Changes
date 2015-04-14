@@ -1,5 +1,11 @@
 Revision history for App-SerializeUtils
 
+0.08    2015-04-14 (PERLANCAR)
+
+	- Add *ddc scripts (Data::Dump::Color), these output are nicer for
+	  debugging due to visual hints produced by Data::Dump::Color.
+
+
 0.07     2014-05-22 (SHARYANTO)
 
          - [converter] Support Sereal and Storable formats (add sereal2*,
