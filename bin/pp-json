@@ -20,14 +20,14 @@ GetOptions(
 
 my $json;
 if ($json_mod eq 'PP') {
-    require JSON::PP; $json = JSON::PP->new->canonical->allow_nonref;
+    require JSON::PP; $json = JSON::PP->new;
 } elsif ($json_mod eq 'XS') {
-    require JSON::XS; $json = JSON::XS->new->canonical->allow_nonref;
+    require JSON::XS; $json = JSON::XS->new;
 } else {
-    require JSON;     $json = JSON    ->new->canonical->allow_nonref;
+    require JSON;     $json = JSON    ->new;
 }
 
-$json->pretty(1);
+$json->canonical->allow_nonref->pretty(1);
 
 undef $/;
 print $json->encode($json->decode(scalar <>));
