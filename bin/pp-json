@@ -20,11 +20,11 @@ GetOptions(
 
 my $json;
 if ($json_mod eq 'PP') {
-    require JSON::PP; $json = JSON::PP->new->allow_nonref;
+    require JSON::PP; $json = JSON::PP->new->canonical->allow_nonref;
 } elsif ($json_mod eq 'XS') {
-    require JSON::XS; $json = JSON::XS->new->allow_nonref;
+    require JSON::XS; $json = JSON::XS->new->canonical->allow_nonref;
 } else {
-    require JSON;     $json = JSON    ->new->allow_nonref;
+    require JSON;     $json = JSON    ->new->canonical->allow_nonref;
 }
 
 $json->pretty(1);
