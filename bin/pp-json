@@ -10,8 +10,8 @@ use Getopt::Long;
 
 my $json_mod = '';
 GetOptions(
-    'pp' => sub { $json_mod = 'PP' },
-    'xs' => sub { $json_mod = 'XS' },
+    'pp' => sub { $json_mod = 'pp' },
+    'xs' => sub { $json_mod = 'xs' },
     'help' => sub {
         print "Usage: pp-json [--pp|--xs] <file>\n";
         exit 0;
@@ -19,12 +19,12 @@ GetOptions(
 );
 
 my $json;
-if ($json_mod eq 'PP') {
+if ($json_mod eq 'pp') {
     require JSON::PP; $json = JSON::PP->new;
-} elsif ($json_mod eq 'XS') {
-    require JSON::XS; $json = JSON::XS->new;
+} elsif ($json_mod eq 'xs') {
+    require Cpanel::JSON::XS; $json = Cpanel::JSON::XS->new;
 } else {
-    require JSON;     $json = JSON    ->new;
+    require JSON::MaybeXS; $json = JSON::MaybeXS->new;
 }
 
 $json->canonical->allow_nonref->pretty(1);
@@ -42,10 +42,12 @@ print $json->encode($json->decode(scalar <>));
 
 =item * --pp
 
-Force using L<JSON::PP> instead of L<JSON>.
+Force using a PP module (currently L<JSON::PP>) instead of the default
+L<JSON::MaybeXS>.
 
 =item * --xs
 
-Force using L<JSON::XS> instead of L<JSON>.
+Force using an XS module (currently L<Cpanel::JSON::XS>) instead of
+the default L<JSON::MaybeXS>.
 
 =back

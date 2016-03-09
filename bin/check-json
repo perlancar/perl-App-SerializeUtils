@@ -1,12 +1,13 @@
 #!perl
 
+# DATE
+# VERSION
+
 use 5.010;
 use strict;
 use warnings;
 
 use Getopt::Long;
-
-# VERSION
 
 my $json_mod = '';
 GetOptions(
@@ -22,9 +23,9 @@ my $json;
 if ($json_mod eq 'PP') {
     require JSON::PP; $json = JSON::PP->new->allow_nonref;
 } elsif ($json_mod eq 'XS') {
-    require JSON::XS; $json = JSON::XS->new->allow_nonref;
+    require Cpanel::JSON::XS; $json = Cpanel::JSON::XS->new->allow_nonref;
 } else {
-    require JSON;     $json = JSON    ->new->allow_nonref;
+    require JSON::MaybeXS; $json = JSON->new->allow_nonref;
 }
 
 eval {
@@ -49,11 +50,13 @@ Check JSON syntax. Prints nothing if JSON syntax is okay.
 
 =item * --pp
 
-Force using L<JSON::PP> instead of L<JSON>.
+Force using a PP module (currently L<JSON::PP>) instead of the default
+L<JSON::MaybeXS>.
 
 =item * --xs
 
-Force using L<JSON::XS> instead of L<JSON>.
+Force using an XS module (currently L<Cpanel::JSON::XS>) instead of
+the default L<JSON::MaybeXS>.
 
 =back
 

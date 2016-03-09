@@ -1,11 +1,11 @@
 #!perl
 
+# DATE
+# VERSION
+
 use 5.010001;
 use strict;
 use warnings;
-
-# VERSION
-# DATE
 
 my ($from, $to) = $0 =~ /(\w+)2(\w+)\z/
     or die "Can't determine what formats to convert from/to, ".
@@ -19,8 +19,8 @@ if ($from eq 'dd') {
 } elsif ($from eq 'ddc') {
     $code_from = 'eval ~~<>';
 } elsif ($from eq 'json') {
-    require JSON;
-    $code_from = 'JSON->new->allow_nonref->decode(~~<>)';
+    require JSON::MaybeXS;
+    $code_from = 'JSON::MaybeXS->new->allow_nonref->decode(~~<>)';
 } elsif ($from eq 'phpser') {
     require PHP::Serialization;
     $code_from = 'PHP::Serialization::unserialize(~~<>)';
@@ -46,8 +46,8 @@ if ($to eq 'dd') {
     require Data::Dump::Color;
     $code_to = "Data::Dump::Color::dump($code_from)";
 } elsif ($to eq 'json') {
-    require JSON;
-    $code_to = "JSON->new->allow_nonref->encode($code_from)";
+    require JSON::MaybeXS;
+    $code_to = "JSON::MaybeXS->new->allow_nonref->encode($code_from)";
 } elsif ($to eq 'phpser') {
     require PHP::Serialization;
     $code_to = "PHP::Serialization::serialize($code_from)";
