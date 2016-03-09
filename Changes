@@ -1,5 +1,10 @@
 Revision history for App-SerializeUtils
 
+0.10    2016-03-09 (PERLANCAR)
+
+	- Replace JSON -> JSON::MaybeXS, JSON::XS -> Cpanel::JSON::XS.
+
+
 0.09    2015-12-29 (PERLANCAR)
 
 	- pp-json: Use canonical().
