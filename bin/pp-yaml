@@ -1,0 +1,32 @@
+#!perl
+
+# DATE
+# VERSION
+
+use 5.010;
+use strict;
+use warnings;
+
+use Getopt::Long;
+
+#my $json_mod = '';
+GetOptions(
+    #'pp' => sub { $json_mod = 'pp' },
+    #'xs' => sub { $json_mod = 'xs' },
+    'help' => sub {
+        print "Usage: pp-yaml <file>\n";
+        exit 0;
+    },
+);
+
+require YAML::XS;
+undef $/;
+print YAML::XS::Dump(YAML::XS::Load(scalar <>));
+
+1;
+#ABSTRACT: Pretty-print YAML
+#PODNAME:
+
+=head1 OPTIONS
+
+=back

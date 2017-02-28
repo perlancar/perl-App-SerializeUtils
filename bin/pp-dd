@@ -1,0 +1,30 @@
+#!perl
+
+# DATE
+# VERSION
+
+use 5.010;
+use strict;
+use warnings;
+
+use Getopt::Long;
+
+GetOptions(
+    'help' => sub {
+        print "Usage: pp-dd <file>\n";
+        exit 0;
+    },
+);
+
+my $data;
+require Data::Dump;
+undef $/;
+Data::Dump::dd(eval <>);
+
+1;
+#ABSTRACT: Pretty-print Perl data structure
+#PODNAME:
+
+=head1 OPTIONS
+
+=back
