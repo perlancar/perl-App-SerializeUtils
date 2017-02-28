@@ -28,5 +28,3 @@ print YAML::XS::Dump(YAML::XS::Load(scalar <>));
 #PODNAME:
 
 =head1 OPTIONS
-
-=back
