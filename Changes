@@ -1,3 +1,8 @@
+0.12    2017-03-01 (PERLANCAR)
+
+	- pp-dd: Add option --undump (and --eval).
+
+
 0.11    2017-02-28 (PERLANCAR)
 
 	- Add utilities: pp-yaml, pp-dd.
