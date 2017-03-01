@@ -9,7 +9,10 @@ use warnings;
 
 use Getopt::Long;
 
+my $method = 'eval';
 GetOptions(
+    'eval'   => sub { $method = 'eval' },
+    'undump' => sub { $method = 'undump' },
     'help' => sub {
         print "Usage: pp-dd <file>\n";
         exit 0;
@@ -17,12 +20,30 @@ GetOptions(
 );
 
 my $data;
+if ($method eq 'eval') {
+    $data = eval scalar <>;
+} else {
+    require Data::Undump;
+    $data = Data::Undump::undump(scalar <>);
+}
+
 require Data::Dump;
-undef $/;
-Data::Dump::dd(eval scalar <>);
+{
+    local $/ = undef;
+    Data::Dump::dd($data);
+}
 
 1;
 #ABSTRACT: Pretty-print Perl data structure
 #PODNAME:
 
 =head1 OPTIONS
+
+=head2 --eval (default)
+
+Use eval() to load the Perl data structure.
+
+=head2 --undump
+
+Use L<Data::Undump> instead of eval() to load the Perl data structure. This is
+safer and faster, but more limited.
