@@ -9,22 +9,63 @@ use warnings;
 
 use Getopt::Long;
 
-#my $json_mod = '';
+my $color = -t STDOUT;
+#my $pretty = 1;
+my $mod = '';
 GetOptions(
-    #'pp' => sub { $json_mod = 'pp' },
-    #'xs' => sub { $json_mod = 'xs' },
+    #'pretty!' => \$pretty,
+    'color!' => \$color,
+    'pp' => sub { $mod = 'pp' },
+    'xs' => sub { $mod = 'xs' },
     'help' => sub {
-        print "Usage: pp-yaml <file>\n";
+        print "Usage: pp-yaml [OPTIONS] <file>\n";
         exit 0;
     },
 );
 
-require YAML::XS;
 undef $/;
-print YAML::XS::Dump(YAML::XS::Load(scalar <>));
+
+if ($mod eq 'xs') {
+    require YAML::XS;
+    print YAML::XS::Dump(YAML::XS::Load(scalar <>));
+} elsif ($mod eq 'pp') {
+    require YAML::Old;
+    print YAML::Old::Dump(YAML::Old::Load(scalar <>));
+} else {
+    require YAML::XS;
+    if ($color) {
+        require YAML::Tiny::Color;
+        print YAML::Tiny::Color::Dump(YAML::XS::Load(scalar <>));
+    } else {
+        print YAML::XS::Dump(YAML::XS::Load(scalar <>));
+    }
+}
 
 1;
-#ABSTRACT: Pretty-print YAML
+#ABSTRACT: Pretty-print (and colorize) YAML
 #PODNAME:
 
+=head1 DESCRIPTION
+
+By default, when in interactive mode will pretty-print and colorize YAML using
+L<YAML::Tiny::Color>, and when piped will pretty-print YAML using L<YAML::XS>.
+
 =head1 OPTIONS
+
+=over
+
+=item * --color, --no-color
+
+Force using color (YAML::Tiny::Color) or no color. The default is to check
+whether STDOUT is not piped (interactive mode) to enable color.
+
+=item * --pp
+
+Force using a PP (pure-Perl) module (currently L<YAML::Old>) instead of the
+default L<YAML::XS>.
+
+=item * --xs
+
+Force using an XS module (currently L<YAML::XS>).
+
+=back
