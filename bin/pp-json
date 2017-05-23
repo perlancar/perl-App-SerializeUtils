@@ -11,12 +11,12 @@ use Getopt::Long;
 
 my $color = -t STDOUT;
 my $pretty = 1;
-my $json_mod = '';
+my $mod = '';
 GetOptions(
     'pretty!' => \$pretty,
     'color!' => \$color,
-    'pp' => sub { $json_mod = 'pp' },
-    'xs' => sub { $json_mod = 'xs' },
+    'pp' => sub { $mod = 'pp' },
+    'xs' => sub { $mod = 'xs' },
     'help' => sub {
         print "Usage: pp-json [--pp|--xs] <file>\n";
         exit 0;
@@ -26,11 +26,11 @@ GetOptions(
 undef $/;
 
 my $json;
-if ($json_mod eq 'pp') {
+if ($mod eq 'pp') {
     require JSON::PP; $json = JSON::PP->new;
     $json->canonical->allow_nonref->pretty($pretty);
     print $json->encode($json->decode(scalar <>));
-} elsif ($json_mod eq 'xs') {
+} elsif ($mod eq 'xs') {
     require Cpanel::JSON::XS; $json = Cpanel::JSON::XS->new;
     $json->canonical->allow_nonref->pretty($pretty);
     print $json->encode($json->decode(scalar <>));
