@@ -9,33 +9,46 @@ use warnings;
 
 use Getopt::Long;
 
+my $color = -t STDOUT;
 my $method = 'eval';
 GetOptions(
     'eval'   => sub { $method = 'eval' },
     'undump' => sub { $method = 'undump' },
+    'color!' => \$color,
     'help' => sub {
         print "Usage: pp-dd <file>\n";
         exit 0;
     },
 );
 
+local $/ = undef;
 my $data;
 if ($method eq 'eval') {
     $data = eval scalar <>;
 } else {
     require Data::Undump;
     $data = Data::Undump::undump(scalar <>);
+    if (!defined($data) && $@) { die }
 }
 
-require Data::Dump;
-{
-    local $/ = undef;
+if ($color) {
+    require Data::Dump::Color;
+    Data::Dump::Color::dd($data);
+} else {
+    require Data::Dump;
     Data::Dump::dd($data);
 }
 
 1;
-#ABSTRACT: Pretty-print Perl data structure
+#ABSTRACT: Pretty-print (and colorize) Perl data structure
 #PODNAME:
+
+=head1 DESCRIPTION
+
+By default, when in interactive mode will load Perl data structure using eval()
+and dump+colorize it using L<Data::Dump::Color>, and when piped will
+dump data using L<Data::Dump>.
+
 
 =head1 OPTIONS
 
@@ -47,3 +60,8 @@ Use eval() to load the Perl data structure.
 
 Use L<Data::Undump> instead of eval() to load the Perl data structure. This is
 safer and faster, but more limited.
+
+=head2 --color, --no-color
+
+Force using color (Data::Dump::Color) or no color. The default is to check
+whether STDOUT is not piped (interactive mode) to enable color.
