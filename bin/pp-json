@@ -1,15 +1,20 @@
 #!perl
 
-use 5.010;
+# DATE
+# VERSION
+
+use 5.010001;
 use strict;
 use warnings;
 
 use Getopt::Long;
 
-# VERSION
-
+my $color = -t STDOUT;
+my $pretty = 1;
 my $json_mod = '';
 GetOptions(
+    'pretty!' => \$pretty,
+    'color!' => \$color,
     'pp' => sub { $json_mod = 'pp' },
     'xs' => sub { $json_mod = 'xs' },
     'help' => sub {
@@ -18,27 +23,49 @@ GetOptions(
     },
 );
 
+undef $/;
+
 my $json;
 if ($json_mod eq 'pp') {
     require JSON::PP; $json = JSON::PP->new;
+    $json->canonical->allow_nonref->pretty($pretty);
+    print $json->encode($json->decode(scalar <>));
 } elsif ($json_mod eq 'xs') {
     require Cpanel::JSON::XS; $json = Cpanel::JSON::XS->new;
+    $json->canonical->allow_nonref->pretty($pretty);
+    print $json->encode($json->decode(scalar <>));
 } else {
     require JSON::MaybeXS; $json = JSON::MaybeXS->new;
+    $json->canonical->allow_nonref->pretty($pretty);
+    if ($color) {
+        require JSON::Color;
+        print JSON::Color::encode_json($json->decode(scalar <>), {pretty=>$pretty});
+    } else {
+        print $json->encode($json->decode(scalar <>));
+    }
 }
 
-$json->canonical->allow_nonref->pretty(1);
-
-undef $/;
-print $json->encode($json->decode(scalar <>));
-
 1;
-#ABSTRACT: Pretty-print JSON
+#ABSTRACT: Pretty-print (and colorize) JSON
 #PODNAME:
+
+=head1 DESCRIPTION
+
+By default, when in interactive mode will pretty-print and colorize JSON using
+L<JSON::Color>, and when piped will pretty-print JSON using L<JSON::MaybeXS>.
 
 =head1 OPTIONS
 
 =over
+
+=item * --color, --no-color
+
+Force using color (JSON::Color) or no color. The default is to check whether
+STDOUT is not piped (interactive mode) to enable color.
+
+=item * --no-pretty
+
+Instead of pretty-printing, print compact JSON.
 
 =item * --pp
 
