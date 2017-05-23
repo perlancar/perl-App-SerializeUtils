@@ -18,7 +18,7 @@ GetOptions(
     'pp' => sub { $mod = 'pp' },
     'xs' => sub { $mod = 'xs' },
     'help' => sub {
-        print "Usage: pp-json [--pp|--xs] <file>\n";
+        print "Usage: pp-json [OPTIONS] <file>\n";
         exit 0;
     },
 );
