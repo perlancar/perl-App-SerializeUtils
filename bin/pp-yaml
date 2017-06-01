@@ -25,21 +25,24 @@ GetOptions(
 
 undef $/;
 
+my $res;
 if ($mod eq 'xs') {
     require YAML::XS;
-    print YAML::XS::Dump(YAML::XS::Load(scalar <>));
+    $res = YAML::XS::Dump(YAML::XS::Load(scalar <>));
 } elsif ($mod eq 'pp') {
     require YAML::Old;
-    print YAML::Old::Dump(YAML::Old::Load(scalar <>));
+    $res = YAML::Old::Dump(YAML::Old::Load(scalar <>));
 } else {
     require YAML::XS;
     if ($color) {
         require YAML::Tiny::Color;
-        print YAML::Tiny::Color::Dump(YAML::XS::Load(scalar <>));
+        $res = YAML::Tiny::Color::Dump(YAML::XS::Load(scalar <>));
     } else {
-        print YAML::XS::Dump(YAML::XS::Load(scalar <>));
+        $res = YAML::XS::Dump(YAML::XS::Load(scalar <>));
     }
 }
+print $res;
+print "\n" if (-t STDOUT) && $res !~ /\R\z/;
 
 1;
 #ABSTRACT: Pretty-print (and colorize) YAML
