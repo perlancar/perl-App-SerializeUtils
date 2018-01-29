@@ -9,7 +9,7 @@ use warnings;
 
 use Getopt::Long;
 
-my $color = -t STDOUT;
+my $color = $ENV{COLOR} // -t STDOUT;
 #my $pretty = 1;
 my $mod = '';
 GetOptions(
@@ -72,3 +72,10 @@ default L<YAML::XS>.
 Force using an XS module (currently L<YAML::XS>).
 
 =back
+
+
+=head1 ENVIRONMENT
+
+=head2 COLOR
+
+Boolean. Set default for color.

@@ -65,3 +65,10 @@ safer and faster, but more limited.
 
 Force using color (Data::Dump::Color) or no color. The default is to check
 whether STDOUT is not piped (interactive mode) to enable color.
+
+
+=head1 ENVIRONMENT
+
+=head2 COLOR
+
+Boolean. Set default for color.

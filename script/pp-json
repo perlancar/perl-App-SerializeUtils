@@ -9,7 +9,7 @@ use warnings;
 
 use Getopt::Long;
 
-my $color = -t STDOUT;
+my $color = $ENV{COLOR} // -t STDOUT;
 my $pretty = 1;
 my $mod = '';
 GetOptions(
@@ -81,3 +81,10 @@ Force using an XS module (currently L<Cpanel::JSON::XS>) instead of
 the default L<JSON::MaybeXS>.
 
 =back
+
+
+=head1 ENVIRONMENT
+
+=head2 COLOR
+
+Boolean. Set default for color.
