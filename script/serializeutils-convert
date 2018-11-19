@@ -221,6 +221,8 @@ The script are installed as the following names for convenience:
 
 =head1 OPTIONS
 
+=over
+
 =item * --(no-)color
 
 Only applies to output formats C<dd>, C<ddc>, C<json>, C<yaml>.
