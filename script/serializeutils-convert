@@ -56,26 +56,29 @@ PARSE_INPUT: {
     if ($from =~ /\A(dd?)\z/) {
         if ($Opts{safe}) {
             require Data::Undump;
-            $code_from = 'Data::Undump::undump(~~<>)';
+            $code_from = 'Data::Undump::undump(scalar <>)';
         } else {
-            $code_from = 'eval ~~<>';
+            $code_from = 'eval scalar <>';
         }
     } elsif ($from eq 'json') {
         require JSON::MaybeXS;
-        $code_from = 'JSON::MaybeXS->new->allow_nonref->decode(~~<>)';
+        $code_from = 'JSON::MaybeXS->new->allow_nonref->decode(scalar <>)';
     } elsif ($from eq 'phpser') {
         require PHP::Serialization;
-        $code_from = 'PHP::Serialization::unserialize(~~<>)';
+        $code_from = 'PHP::Serialization::unserialize(scalar <>)';
     } elsif ($from eq 'sereal') {
         require Sereal::Decoder;
-        $code_from = 'Sereal::Decoder::decode_sereal(~~<>)';
+        $code_from = 'Sereal::Decoder::decode_sereal(scalar <>)';
     } elsif ($from eq 'storable') {
         require Storable;
-        $code_from = 'Storable::thaw(~~<>)';
+        $code_from = 'Storable::thaw(scalar <>)';
     } elsif ($from eq 'yaml') {
         no warnings 'once';
         require YAML::Syck; $YAML::Syck::ImplicitTyping = 1;
-        $code_from = 'YAML::Syck::Load(~~<>)';
+        $code_from = 'YAML::Syck::Load(scalar <>)';
+    } elsif ($from eq 'sexp') {
+        require SExpression::Decode::Marpa;
+        $code_from = 'SExpression::Decode::Marpa::from_sexp(scalar <>)';
     } else {
         die "serializeutils-convert: Can't convert from '$from'\n";
     }
