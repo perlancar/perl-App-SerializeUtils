@@ -69,6 +69,9 @@ PARSE_INPUT: {
     } elsif ($from eq 'sereal') {
         require Sereal::Decoder;
         $code_from = 'Sereal::Decoder::decode_sereal(scalar <>)';
+    } elsif ($from eq 'sexp') {
+        require SExpression::Decode::Marpa;
+        $code_from = 'SExpression::Decode::Marpa::from_sexp(scalar <>)';
     } elsif ($from eq 'storable') {
         require Storable;
         $code_from = 'Storable::thaw(scalar <>)';
@@ -76,9 +79,6 @@ PARSE_INPUT: {
         no warnings 'once';
         require YAML::Syck; $YAML::Syck::ImplicitTyping = 1;
         $code_from = 'YAML::Syck::Load(scalar <>)';
-    } elsif ($from eq 'sexp') {
-        require SExpression::Decode::Marpa;
-        $code_from = 'SExpression::Decode::Marpa::from_sexp(scalar <>)';
     } else {
         die "serializeutils-convert: Can't convert from '$from'\n";
     }
@@ -117,6 +117,9 @@ OUTPUT: {
     } elsif ($to eq 'sereal') {
         require Sereal::Encoder;
         $code_to = "Sereal::Encoder::encode_sereal($code_from)";
+    } elsif ($to eq 'sexp') {
+        require Data::Dump::SExpression;
+        $code_to = "Data::Dump::SExpression::dd_sexp($code_from)";
     } elsif ($to eq 'storable') {
         require Storable;
         $code_to = "Storable::freeze($code_from)";
