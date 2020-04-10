@@ -1,3 +1,10 @@
+0.162   2020-04-10  Released-By: PERLANCAR; Urgency: medium
+
+	- Add utilities: dd2sexp, json2sexp, phpser2sexp, sereal2sexp,
+	  storable2sexp, yaml2sexp, sexp2dd, sexp2ddc, sexp2json, sexp2phpser,
+	  sexp2sereal, sexp2storable, sexp2yaml.
+
+
 0.161   2018-11-19  Released-By: PERLANCAR
 
 	- Add scripts dd2dd, json2json, yaml2yml for convenience.

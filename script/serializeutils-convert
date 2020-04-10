@@ -119,7 +119,7 @@ OUTPUT: {
         $code_to = "Sereal::Encoder::encode_sereal($code_from)";
     } elsif ($to eq 'sexp') {
         require Data::Dump::SExpression;
-        $code_to = "Data::Dump::SExpression::dd_sexp($code_from)";
+        $code_to = "Data::Dump::SExpression::dump_sexp($code_from)";
     } elsif ($to eq 'storable') {
         require Storable;
         $code_to = "Storable::freeze($code_from)";
