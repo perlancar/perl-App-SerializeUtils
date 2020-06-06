@@ -93,9 +93,15 @@ OUTPUT: {
         } elsif ($Opts{dumper} eq 'Data::Dump') {
             require Data::Dump;
             $code_to = "Data::Dump::dump($code_from)";
+        } elsif ($Opts{dumper} eq 'Data::Bahe') {
+            require Data::Bahe;
+            $code_to = "Data::Bahe::dump($code_from)";
         } elsif ($Opts{dumper} eq 'Data::Dmp') {
             require Data::Dmp;
             $code_to = "Data::Dmp::dmp($code_from)";
+        } elsif ($Opts{dumper} eq 'Data::Dumper::Compact') {
+            require Data::Dumper::Compact;
+            $code_to = "Data::Dumper::Compact->dump($code_from)";
         } elsif ($Opts{dumper} eq 'Data::Dumper') {
             require Data::Dumper;
             $code_to = "Data::Dumper->new([$code_from], ['data'])->".
