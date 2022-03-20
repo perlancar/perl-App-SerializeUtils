@@ -6,6 +6,9 @@ use warnings;
 
 use Getopt::Long;
 
+# AUTHORITY
+# DATE
+# DIST
 # VERSION
 
 my $yaml_mod = 'XS';

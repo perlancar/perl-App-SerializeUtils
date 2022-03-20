@@ -1,13 +1,15 @@
 #!perl
 
-# DATE
-# VERSION
-
 use 5.010;
 use strict;
 use warnings;
 
 use Getopt::Long;
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 my $color = -t STDOUT;
 my $method = 'eval';

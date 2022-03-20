@@ -7,6 +7,9 @@ use warnings;
 use Data::Dump;
 use PHP::Serialization qw(unserialize);
 
+# AUTHORITY
+# DATE
+# DIST
 # VERSION
 
 eval {
